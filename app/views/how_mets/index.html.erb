@@ -1,0 +1,27 @@
+<h1>Listing how_mets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @how_mets.each do |how_met| %>
+      <tr>
+        <td><%= how_met.name %></td>
+        <td><%= link_to 'Show', how_met %></td>
+        <td><%= link_to 'Edit', edit_how_met_path(how_met) %></td>
+        <td><%= link_to 'Destroy', how_met, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New How met', new_how_met_path %>

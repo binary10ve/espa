@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start_time: 2014-06-30 16:18:56
+  end_time: 2014-06-30 16:18:56
+  client_id: 1
+  service_id: 1
+  notes: MyText
+
+two:
+  start_time: 2014-06-30 16:18:56
+  end_time: 2014-06-30 16:18:56
+  client_id: 1
+  service_id: 1
+  notes: MyText

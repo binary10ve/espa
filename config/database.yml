@@ -1,0 +1,6 @@
+development:
+  adapter: mysql2
+  database: espa
+  pool: 5
+  username: root
+  password: 
