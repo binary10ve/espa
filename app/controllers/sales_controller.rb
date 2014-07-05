@@ -1,4 +1,4 @@
-class SalesController < ApplicationController
+class SalesController < EspaBaseController
   before_action :authenticate_user!
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
 

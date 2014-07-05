@@ -1,0 +1,29 @@
+<h1>Listing rate_cards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job</th>
+      <th>Service charge</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rate_cards.each do |rate_card| %>
+      <tr>
+        <td><%= rate_card.job_id %></td>
+        <td><%= rate_card.service_charge %></td>
+        <td><%= link_to 'Show', rate_card %></td>
+        <td><%= link_to 'Edit', edit_rate_card_path(rate_card) %></td>
+        <td><%= link_to 'Destroy', rate_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rate card', new_rate_card_path %>

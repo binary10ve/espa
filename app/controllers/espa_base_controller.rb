@@ -1,0 +1,2 @@
+class EspaBaseController < ApplicationController
+end

@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @staff.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @staff.last_name %>
+</p>
+
+<p>
+  <strong>Date of birth:</strong>
+  <%= @staff.date_of_birth %>
+</p>
+
+<p>
+  <strong>Pan no:</strong>
+  <%= @staff.pan_no %>
+</p>
+
+<p>
+  <strong>Permanent address:</strong>
+  <%= @staff.permanent_address %>
+</p>
+
+<p>
+  <strong>Temporary address:</strong>
+  <%= @staff.temporary_address %>
+</p>
+
+<p>
+  <strong>Phone1:</strong>
+  <%= @staff.phone1 %>
+</p>
+
+<p>
+  <strong>Phone2:</strong>
+  <%= @staff.phone2 %>
+</p>
+
+<p>
+  <strong>Emergency contact no:</strong>
+  <%= @staff.emergency_contact_no %>
+</p>
+
+<%= link_to 'Edit', edit_admin_staff_path(@staff) %> |
+<%= link_to 'Back', admin_staffs_path %>

@@ -1,4 +1,4 @@
-class ClientsController < ApplicationController
+class ClientsController < EspaBaseController
   before_action :authenticate_user!
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 

@@ -1,0 +1,133 @@
+http://192.168.13.80:9000/#/dealer-found/53b1127bed97141d18ef1dc2
+
+https://aurora-b-dev-mobile.ovrc.com/#/dealer-found/53b1127bed97141d18ef1dc2
+
+
+
+
+rails generate scaffold Inventory name:string description:text type:string cost:decimal quantity:integer purchased_on:datetime
+
+Inventory
+name
+type
+cost
+quantity
+purchased_on
+
+
+
+Clients
+employees
+services
+appointments
+
+campaigns
+sales
+
+service_offers
+flat amount 
+discount in percent
+Note
+
+
+rails generate scaffold Discount percent_off:decimal flat_amount:decimal
+
+
+ create_table "discounts", :force => true do |t|
+    t.decimal  "percent_off"
+    t.decimal  "flat_amount"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+
+
+
+rails generate scaffold Appointment start_time:datetime end_time:datetime client_id:integer service_id:integer notes:text 
+
+create_table "appointments", :force => true do |t|
+    t.datetime "time"
+    t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "service_id"
+    t.integer  "location_id"
+    t.integer  "duration"
+    t.text     "notes"
+  end
+
+  add_index "appointments", ["client_id"], :name => "index_appointments_on_client_id"
+  add_index "appointments", ["location_id"], :name => "index_appointments_on_location_id"
+  add_index "appointments", ["service_id"], :name => "index_appointments_on_service_id"
+
+rails generate scaffold Client first_name:string last_name:string phone1:string phone2:string email_id:string address:string notes:text birthdate:date how_met_id:integer
+
+  create_table "clients", :force => true do |t|
+    t.string   "first_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "phone"
+    t.string   "phone_type"
+    t.string   "email"
+    t.string   "address"
+    t.string   "last_name"
+    t.text     "notes"
+    t.date     "birthdate"
+    t.text     "hair_description"
+    t.integer  "how_met_id"
+  end
+
+  add_index "clients", ["how_met_id"], :name => "index_clients_on_how_met_id"
+
+rails generate scaffold how_met name:string 
+
+  create_table "how_mets", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  rails generate scaffold Service name:string 
+
+  create_table "services", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "settings", :force => true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+
+rails generate scaffold Sale customer_id:integer amount:decimal paid_at:datetime service_id:integer 
+  create_table "sales", :force => true do |t|
+    t.integer  "customer_id"
+    t.decimal  "amount"
+    t.datetime "paid_at"
+    t.integer  "service_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+
+
+

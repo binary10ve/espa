@@ -1,4 +1,4 @@
-class HowMetsController < ApplicationController
+class HowMetsController < EspaBaseController
   before_action :authenticate_user!
   before_action :set_how_met, only: [:show, :edit, :update, :destroy]
 

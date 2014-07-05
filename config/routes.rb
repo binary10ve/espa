@@ -1,4 +1,18 @@
 Espa::Application.routes.draw do
+
+  resources :memberships
+
+  resources :campaigns
+
+  namespace :admin do
+    resources :attendances
+    resources :staff_roles
+    resources :staffs
+    resources :roles
+    resources :jobs
+    resources :rate_cards
+  end
+
   resources :inventories
 
   devise_for :users

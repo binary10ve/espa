@@ -1,0 +1,37 @@
+<%= form_for(@admin_attendance) do |f| %>
+  <% if @admin_attendance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_attendance.errors.count, "error") %> prohibited this admin_attendance from being saved:</h2>
+
+      <ul>
+      <% @admin_attendance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :staff_id %><br>
+    <%= f.number_field :staff_id %>
+  </div>
+  <div class="field">
+    <%= f.label :time_in %><br>
+    <%= f.text_field :time_in %>
+  </div>
+  <div class="field">
+    <%= f.label :time_out %><br>
+    <%= f.text_field :time_out %>
+  </div>
+  <div class="field">
+    <%= f.label :attendance_date %><br>
+    <%= f.date_select :attendance_date %>
+  </div>
+  <div class="field">
+    <%= f.label :showed_up %><br>
+    <%= f.check_box :showed_up %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

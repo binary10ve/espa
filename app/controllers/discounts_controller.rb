@@ -1,4 +1,4 @@
-class DiscountsController < ApplicationController
+class DiscountsController < EspaBaseController
   before_action :authenticate_user!
   before_action :set_discount, only: [:show, :edit, :update, :destroy]
 

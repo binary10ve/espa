@@ -1,4 +1,4 @@
-class ServicesController < ApplicationController
+class ServicesController < EspaBaseController
   before_action :authenticate_user!
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 

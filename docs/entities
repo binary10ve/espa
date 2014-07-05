@@ -1,0 +1,102 @@
+rails g scaffold Staff first_name:string last_name:string date_of_birth:date pan_no:string permanent_address:text temporary_address:text phone1:string phone2:string emergency_contact_no:string 
+
+staff_id
+first_name 
+last_name
+date_of_birth
+pan_no
+permaneny_address
+temporary_address
+phone1
+phone2
+emergency_contact_no
+
+
+
+
+roles
+
+rails g scaffold staff_roles staff_id:integer role_id:integer
+staff_roles
+staff_id
+roles_id
+
+
+
+rails g scaffold Campaign name:string description:text
+Campaign
+name
+description
+
+rails g scaffold Membership campaing_id:integer client_id:integer start_date:datetime end_date:datetime note:text
+
+membership
+note
+campain_id
+client_id
+start_date
+end_date
+
+
+
+
+roles
+id
+name
+
+Managers
+
+Staff
+
+rails g scaffold Role name:string
+
+
+
+jobs
+name
+
+
+
+rails rails g scaffold 	Admin:Job name:string
+
+rails g scaffold Attendance staff_id:integer time_in:dateime time_out:dateime attendance_date:date showed_up:boolean
+attendances
+staff_id
+time_in
+time_out
+attendance_date
+showed_up
+
+employee_roles
+role_id
+employee_id
+
+
+Employee has_many roles
+
+services
+employee_id
+
+
+
+rate card
+job_id
+service_charges
+
+
+jobs
+service_id
+employee_id
+
+
+services
+job_id
+employee_id
+
+
+
+employee_roles
+employee_id
+role_id
+
+

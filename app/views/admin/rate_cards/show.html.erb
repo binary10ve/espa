@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @rate_card.job_id %>
+</p>
+
+<p>
+  <strong>Service charge:</strong>
+  <%= @rate_card.service_charge %>
+</p>
+
+<%= link_to 'Edit', edit_rate_card_path(@rate_card) %> |
+<%= link_to 'Back', rate_cards_path %>

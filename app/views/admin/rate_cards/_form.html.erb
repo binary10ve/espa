@@ -1,0 +1,25 @@
+<%= form_for(@rate_card) do |f| %>
+  <% if @rate_card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rate_card.errors.count, "error") %> prohibited this rate_card from being saved:</h2>
+
+      <ul>
+      <% @rate_card.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :job_id %><br>
+    <%= f.number_field :job_id %>
+  </div>
+  <div class="field">
+    <%= f.label :service_charge %><br>
+    <%= f.text_field :service_charge %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

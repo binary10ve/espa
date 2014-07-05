@@ -1,0 +1,35 @@
+<h1>Listing admin_attendances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Staff</th>
+      <th>Time in</th>
+      <th>Time out</th>
+      <th>Attendance date</th>
+      <th>Showed up</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_attendances.each do |admin_attendance| %>
+      <tr>
+        <td><%= admin_attendance.staff_id %></td>
+        <td><%= admin_attendance.time_in %></td>
+        <td><%= admin_attendance.time_out %></td>
+        <td><%= admin_attendance.attendance_date %></td>
+        <td><%= admin_attendance.showed_up %></td>
+        <td><%= link_to 'Show', admin_attendance %></td>
+        <td><%= link_to 'Edit', edit_admin_attendance_path(admin_attendance) %></td>
+        <td><%= link_to 'Destroy', admin_attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attendance', new_admin_attendance_path %>

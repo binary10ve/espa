@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630135255) do
+ActiveRecord::Schema.define(version: 20140705203027) do
 
   create_table "appointments", force: true do |t|
     t.datetime "start_time"
@@ -19,6 +19,23 @@ ActiveRecord::Schema.define(version: 20140630135255) do
     t.integer  "client_id"
     t.integer  "service_id"
     t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "attendances", force: true do |t|
+    t.integer  "staff_id"
+    t.datetime "time_in"
+    t.datetime "time_out"
+    t.date     "attendance_date"
+    t.boolean  "showed_up"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "campaigns", force: true do |t|
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61,6 +78,35 @@ ActiveRecord::Schema.define(version: 20140630135255) do
     t.datetime "updated_at"
   end
 
+  create_table "jobs", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "memberships", force: true do |t|
+    t.integer  "campaing_id"
+    t.integer  "client_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rate_cards", force: true do |t|
+    t.integer  "job_id"
+    t.decimal  "service_charge", precision: 10, scale: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sales", force: true do |t|
     t.integer  "customer_id"
     t.decimal  "amount",      precision: 10, scale: 0
@@ -73,6 +119,27 @@ ActiveRecord::Schema.define(version: 20140630135255) do
 
   create_table "services", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "staff_roles", force: true do |t|
+    t.integer  "staff_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "staffs", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_birth"
+    t.string   "pan_no"
+    t.text     "permanent_address"
+    t.text     "temporary_address"
+    t.string   "phone1"
+    t.string   "phone2"
+    t.string   "emergency_contact_no"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

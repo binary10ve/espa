@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  campaing_id: 1
+  client_id: 1
+  start_date: 2014-07-06 01:09:24
+  end_date: 2014-07-06 01:09:24
+  note: MyText
+
+two:
+  campaing_id: 1
+  client_id: 1
+  start_date: 2014-07-06 01:09:24
+  end_date: 2014-07-06 01:09:24
+  note: MyText

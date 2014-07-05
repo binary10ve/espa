@@ -1,4 +1,4 @@
-class InventoriesController < ApplicationController
+class InventoriesController < EspaBaseController
   before_action :set_inventory, only: [:show, :edit, :update, :destroy]
 
   # GET /inventories

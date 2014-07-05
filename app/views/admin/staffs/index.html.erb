@@ -1,0 +1,43 @@
+<h1>Listing staffs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Date of birth</th>
+      <th>Pan no</th>
+      <th>Permanent address</th>
+      <th>Temporary address</th>
+      <th>Phone1</th>
+      <th>Phone2</th>
+      <th>Emergency contact no</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staffs.each do |staff| %>
+      <tr>
+        <td><%= staff.first_name %></td>
+        <td><%= staff.last_name %></td>
+        <td><%= staff.date_of_birth %></td>
+        <td><%= staff.pan_no %></td>
+        <td><%= staff.permanent_address %></td>
+        <td><%= staff.temporary_address %></td>
+        <td><%= staff.phone1 %></td>
+        <td><%= staff.phone2 %></td>
+        <td><%= staff.emergency_contact_no %></td>
+        <td><%= link_to 'Show', admin_staff_path(staff) %></td>
+        <td><%= link_to 'Edit', edit_admin_staff_path(staff) %></td>
+        <td><%= link_to 'Destroy', admin_staff_path(staff), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Staff', new_admin_staff_path %>
