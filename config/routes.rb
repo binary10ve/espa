@@ -1,5 +1,7 @@
 Espa::Application.routes.draw do
 
+  resources :roles_users
+
   resources :memberships
 
   resources :campaigns
@@ -17,8 +19,6 @@ Espa::Application.routes.draw do
 
   devise_for :users
   resources :how_mets
-
-  resources :sales
 
   resources :services
 

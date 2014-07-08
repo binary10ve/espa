@@ -1,16 +1,23 @@
-rails g scaffold Staff first_name:string last_name:string date_of_birth:date pan_no:string permanent_address:text temporary_address:text phone1:string phone2:string emergency_contact_no:string 
 
-staff_id
-first_name 
-last_name
-date_of_birth
-pan_no
-permaneny_address
-temporary_address
-phone1
-phone2
-emergency_contact_no
+Stories
+1) Admin should be able to login
+2) Admin should be able to add/edit/delete users(Employees)
+3) Staff should be able to login
+4) Staff should be able to add/edit/delete clients
+5) Staff should be able to create orders
+ Select client/Create new
+ Add job_items
+ Select staff
+ Add Itemized charges
 
+
+
+
+
+
+Orders
+
+job_items
 
 
 
@@ -98,5 +105,20 @@ employee_id
 employee_roles
 employee_id
 role_id
+
+
+User section
+Appointments
+Orders
+Campaigns
+
+
+Admin Section
+Rate card
+Staff Manangement
+  - Attendance
+  - Role Management
+Inventory Management
+
 
 

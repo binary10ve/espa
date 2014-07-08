@@ -1,4 +1,8 @@
-<%= form_for(@staff, :url => admin_staffs_path) do |f| %>
+
+<%content_for :quick_links do %>
+<%= render :partial => "quick_links"%>
+<% end%>
+<%= form_for(@staff, :url => @staff.new_record? ? admin_staffs_path : admin_staff_path(@staff) ,:html=>{:class=>"form-horizontal"}) do |f| %>
   <% if @staff.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
@@ -10,44 +14,112 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+ 
+  <div class="control-group">
+    <%= f.label :first_name ,:class => "control-label"%>
+    <div class="controls">
+          <div class="input-prepend">
+        <%= f.text_field :first_name %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+  <div class="control-group">
+    <%= f.label :last_name ,:class => "control-label"%>
+    <div class="controls">
+          <div class="input-prepend">
+        <%= f.text_field :last_name %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :date_of_birth %><br>
-    <%= f.date_select :date_of_birth %>
+  <div class="control-group">
+    <%= f.label :email ,:class => "control-label"%>
+    <div class="controls">
+          <div class="input-prepend">
+        <%= f.text_field :email %>
+      </div>
+    </div>
+    <%= f.hidden_field :password , :value => GlobalConfig::MASTER_PASSWORD%>
+    <%= f.hidden_field :password_confirmation, :value => GlobalConfig::MASTER_PASSWORD %>
   </div>
-  <div class="field">
-    <%= f.label :pan_no %><br>
-    <%= f.text_field :pan_no %>
+  <div class="control-group">
+    <%= f.label :date_of_birth,:class => "control-label" %>
+    <div class="controls">
+          <div class="input-prepend">
+        <%= f.date_select :date_of_birth %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :permanent_address %><br>
-    <%= f.text_area :permanent_address %>
+  <div class="control-group">
+    <%= f.label :pan_no ,:class => "control-label"%>
+    <div class="controls">
+          <div class="input-prepend">
+        <%= f.text_field :pan_no %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :temporary_address %><br>
-    <%= f.text_area :temporary_address %>
+  <div class="control-group">
+    <%= f.label :permanent_address ,:class => "control-label"%>
+    <div class="controls">
+          <div class="input-prepend">
+        <%= f.text_area :permanent_address %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :phone1 %><br>
-    <%= f.text_field :phone1 %>
+  <div class="control-group">
+    <%= f.label :temporary_address ,:class => "control-label"%>
+    <div class="controls">
+          <div class="input-prepend">
+        <%= f.text_area :temporary_address %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :phone2 %><br>
-    <%= f.text_field :phone2 %>
+  <div class="control-group">
+    <%= f.label :phone1 ,:class => "control-label"%>
+    <div class="controls">
+          <div class="input-prepend">
+        <%= f.text_field :phone1 %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :emergency_contact_no %><br>
-    <%= f.text_field :emergency_contact_no %>
+  <div class="control-group">
+    <%= f.label :phone2 ,:class => "control-label"%>
+    <div class="controls">
+          <div class="input-prepend">
+        <%= f.text_field :phone2 %>
+      </div>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <%= f.label :emergency_contact_no ,:class => "control-label"%>
+    <div class="controls">
+          <div class="input-prepend">
+        <%= f.text_field :emergency_contact_no %>
+      </div>
+    </div>
   </div>
+  <div class="control-group">
+    <%= f.label :role ,:class => "control-label"%>
+    <div class="controls">
+          <div class="input-prepend">
+            
+        <%= select_tag(:roles, options_for_select(@roles.map{|role| [role.name, role.id]},@selected_roles),:multiple => true) %>
+      </div>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="input01"></label>
+        <div class="controls">
+          <%= link_to 'Cancel', admin_staffs_path ,:class=>"btn"%>
+           <%= f.submit :class=>"btn btn-success"%>
+        </div>
+  
+  </div>
+  
 <% end %>
+
+
+<script type="text/javascript">
+$("#roles").multiselect({
+   selectedText: "# of # selected"
+});
+</script>

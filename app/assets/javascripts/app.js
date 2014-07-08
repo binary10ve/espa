@@ -33,7 +33,7 @@
 		}
 	};
 
-	var calendar = $('#calendar').calendar(options);
+	//var calendar = $('#calendar').calendar(options);
 
 	$('.btn-group button[data-calendar-nav]').each(function() {
 		var $this = $(this);
@@ -69,4 +69,9 @@
 		//e.preventDefault();
 		//e.stopPropagation();
 	});
+
+
+	$(document).on('page:fetch',   function() { NProgress.start(); });
+$(document).on('page:change',  function() { NProgress.done(); });
+$(document).on('page:restore', function() { NProgress.remove(); });
 }(jQuery));

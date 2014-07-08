@@ -1,4 +1,4 @@
-class Admin::JobsController < ApplicationController
+class Admin::JobsController  < Admin::AdminBaseController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /jobs

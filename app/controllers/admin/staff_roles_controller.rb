@@ -1,4 +1,4 @@
-class Admin::StaffRolesController < ApplicationController
+class Admin::StaffRolesController  < Admin::AdminBaseController
   before_action :set_staff_role, only: [:show, :edit, :update, :destroy]
 
   # GET /staff_roles

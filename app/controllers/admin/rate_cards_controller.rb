@@ -1,4 +1,4 @@
-class Admin::RateCardsController < ApplicationController
+class Admin::RateCardsController < Admin::AdminBaseController
   before_action :set_rate_card, only: [:show, :edit, :update, :destroy]
 
   # GET /rate_cards

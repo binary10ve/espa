@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140705203027) do
+ActiveRecord::Schema.define(version: 20140708145039) do
 
   create_table "appointments", force: true do |t|
     t.datetime "start_time"
@@ -107,25 +107,15 @@ ActiveRecord::Schema.define(version: 20140705203027) do
     t.datetime "updated_at"
   end
 
-  create_table "sales", force: true do |t|
-    t.integer  "customer_id"
-    t.decimal  "amount",      precision: 10, scale: 0
-    t.datetime "paid_at"
-    t.integer  "service_id"
-    t.integer  "staff_id"
+  create_table "roles_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "services", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "staff_roles", force: true do |t|
-    t.integer  "staff_id"
-    t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -157,6 +147,15 @@ ActiveRecord::Schema.define(version: 20140705203027) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_birth"
+    t.string   "pan_no"
+    t.text     "permanent_address"
+    t.text     "temporary_address"
+    t.string   "phone1"
+    t.string   "phone2"
+    t.string   "emergency_contact_no"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

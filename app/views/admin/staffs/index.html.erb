@@ -1,18 +1,25 @@
-<h1>Listing staffs</h1>
+<% content_for :quick_links do %>
+  <%= render :partial =>"quick_links"%>
+<% end %>
 
-<table>
+<h3>Listing staff</h3>
+<div>
+
+<p class="pull-right">
+<%= link_to 'New Staff', new_admin_staff_path ,:class=>"btn btn-info"%>
+</p>
+<form class="pull-left" action="/admin/staffs" method="GET">
+  <input type="text" class="search-query" placeholder="Search" name="query" value="<%= params[:query]%>">
+</form>
+</div>
+<table class="table">
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Date of birth</th>
-      <th>Pan no</th>
-      <th>Permanent address</th>
-      <th>Temporary address</th>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Role</th>
       <th>Phone1</th>
       <th>Phone2</th>
-      <th>Emergency contact no</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -21,23 +28,15 @@
   <tbody>
     <% @staffs.each do |staff| %>
       <tr>
-        <td><%= staff.first_name %></td>
-        <td><%= staff.last_name %></td>
-        <td><%= staff.date_of_birth %></td>
-        <td><%= staff.pan_no %></td>
-        <td><%= staff.permanent_address %></td>
-        <td><%= staff.temporary_address %></td>
+        <td><%= link_to staff.full_name, admin_staff_path(staff) %></td>
+        <td><%= link_to staff.email, admin_staff_path(staff) %></td>
+        <td><%= staff.roles.map(&:name).join(',') %></td>
         <td><%= staff.phone1 %></td>
         <td><%= staff.phone2 %></td>
-        <td><%= staff.emergency_contact_no %></td>
-        <td><%= link_to 'Show', admin_staff_path(staff) %></td>
-        <td><%= link_to 'Edit', edit_admin_staff_path(staff) %></td>
-        <td><%= link_to 'Destroy', admin_staff_path(staff), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_admin_staff_path(staff) ,:class=>"btn btn-success" %></td>
+        <td><%= link_to 'Destroy', admin_staff_path(staff), method: :delete, data: { confirm: 'Are you sure?' } ,:class=>"btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Staff', new_admin_staff_path %>
+<%= will_paginate @staffs %>
