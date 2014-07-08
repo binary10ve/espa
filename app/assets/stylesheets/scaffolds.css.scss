@@ -20,6 +20,9 @@ pre {
 
 a {
   color: #000;
+  &:visited {
+    color: #666;
+  }
   &:hover {
     color: #fff;
     background-color: #000;
@@ -37,7 +40,9 @@ div {
 }
 
 .field_with_errors {
-  color: red;
+  padding: 2px;
+  background-color: red;
+  display: table;
 }
 
 #error_explanation {

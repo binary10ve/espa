@@ -10,7 +10,6 @@
  *
  *= require bootstrap
  *= require bootstrap-theme.min
- *= require bootstrap-responsive
  *= require jquery-ui
  *= require jquery.multiselect
  *= require nprogress

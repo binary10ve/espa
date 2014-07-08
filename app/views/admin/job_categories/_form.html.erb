@@ -1,0 +1,46 @@
+<% content_for :quick_links do %>
+  <%= render :partial =>"quick_links"%>
+<% end %>
+<%= form_for(@job_category, :url => admin_job_category_path(@job_category),:html=>{:class=>"form-horizontal"}) do |f| %>
+  <% if @job_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job_category.errors.count, "error") %> prohibited this job_category from being saved:</h2>
+
+      <ul>
+      <% @job_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="control-group">
+    <%= f.label :category_name,:class => "control-label"%>
+    <div class="controls">
+          <div class="input-prepend">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+  </div>
+<%# for job in @job_category.jobs %>
+  <div class="control-group ">
+      <%= f.fields_for :jobs do |job_form| %>
+      <%= f.label :job_name,:class => "control-label"%>
+         <div class="controls fields">
+            <div class="input-prepend">
+              Job: <%= job_form.text_field :name %>
+            </div>
+            <%#= job_form.check_box :_destroy %>
+            <%= link_to_remove_fields "remove", job_form %>
+        </div>
+      <% end %>
+  </div>
+<% #end %>
+  <div class="control-group">
+    <%= link_to_add_fields "Add Jobs", f, :jobs %>
+  </div>
+  <div class="actions">
+     <%= link_to 'Back', admin_job_categories_path ,:class => "btn"%>
+    <%= f.submit :class=> "btn btn-success" %>
+
+  </div>
+<% end %>

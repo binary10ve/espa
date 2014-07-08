@@ -1,0 +1,35 @@
+<% content_for :quick_links do %>
+  <%= render :partial =>"quick_links"%>
+<% end %>
+<legend style="border:none;">Listing Categories</legend>
+<table class="table">
+  <tbody>
+    <% @job_categories.each do |job_category| %>
+      <tr>
+        <td>
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th><%= link_to job_category.name , edit_admin_job_category_path(job_category) %>  
+          <p class="pull-right">
+                  <%= link_to 'Delete', admin_job_category_path(job_category), method: :delete, data: { confirm: 'Are you sure?. All Jobs assoicated with this category will be deleted' } %>
+                </p></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%job_category.jobs.each do |job|%>
+              <tr class="success">
+                <td><p><%= job.name%><span class="pull-right"><%= link_to 'Delete', admin_job_path(job), method: :delete, data: { confirm: 'Are you sure?'} %> </span> </p></td>
+              </tr>
+              <%end%>
+            </tbody>
+          </table>
+        </td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

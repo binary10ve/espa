@@ -1,5 +1,7 @@
 Espa::Application.routes.draw do
 
+
+
   resources :roles_users
 
   resources :memberships
@@ -8,6 +10,7 @@ Espa::Application.routes.draw do
 
   namespace :admin do
     resources :attendances
+    resources :job_categories
     resources :staff_roles
     resources :staffs
     resources :roles
@@ -16,6 +19,7 @@ Espa::Application.routes.draw do
   end
 
   resources :inventories
+  resource :pos
 
   devise_for :users
   resources :how_mets

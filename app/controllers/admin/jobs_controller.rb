@@ -56,7 +56,7 @@ class Admin::JobsController  < Admin::AdminBaseController
   def destroy
     @job.destroy
     respond_to do |format|
-      format.html { redirect_to admin_jobs_url }
+      format.html { redirect_to job_categories_url }
       format.json { head :no_content }
     end
   end
