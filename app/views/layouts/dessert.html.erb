@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Espa</title>
+  <%= stylesheet_link_tag    "dessert", media: "all", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+         <div class="cover-container">
+           <div class="inner cover">
+<%= yield%>
+            </div>
+          </div>
+      </div>
+</div>
+
+</body>
+</html>
