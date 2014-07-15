@@ -1,0 +1,120 @@
+<% content_for :quick_links do %>
+  <%= render :partial =>"quick_links"%>
+<% end %>
+<%= form_tag '/' ,:class => "form-horizontal",:id=>"new_client" do %>
+
+<div class="row" style="margin-left:10px;">
+<legend>New order</legend>
+</div>
+<div class="row" style="margin-left:10px;">
+
+    <div class="span6">
+      <fieldset>
+      <legend>Add Client</legend>
+      <div class="control-group">
+        <label class="control-label" for="input01">First Name</label>
+        <div class="controls">
+          <%= text_field_tag :first_name%>
+        </div>
+      </div>
+      </fieldset>
+      <fieldset>
+      <div class="control-group">
+        <label class="control-label" for="input01">Last Name</label>
+        <div class="controls">
+          <%= text_field_tag :last_name%>
+        </div>
+      </div>
+      </fieldset>
+      <fieldset>
+      <div class="control-group">
+        <label class="control-label" for="input01">Email</label>
+        <div class="controls">
+          <%= text_field_tag :email_id%>
+        </div>
+      </div>
+      </fieldset>
+      <fieldset>
+      <div class="control-group">
+        <label class="control-label" for="input01">Phone</label>
+        <div class="controls">
+          <span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr;">
+          <%= text_field_tag :phone1,'',{:autocomplete => "off"}%>
+        </span>
+        </div>
+      </div>
+      </fieldset>
+    </div>
+    <div class="span6" >
+      <fieldset>
+        <legend>Select Line Items</legend>
+        <ul class="nav nav-tabs" role="tablist" id="tabbed">
+          <% @job_categories.each_with_index do|jc, i|%>
+          <li <%if i==0%>class="active"<% end %>><a  href="#" data-href="tab_<%=jc.id%>"><%= jc.name%></a></li>
+          <% end %>
+        </ul>
+        <% @job_categories.each_with_index do|jc, i|%>
+        <div class="control-group tab-content" id="tab_<%= jc.id%>" <% if i > 0 %>style="display:none;" <% end %>>
+          <table class="table table-bordered job-item-container">
+              <tbody>
+                <% jobs_group = jc.jobs.each_slice(3).to_a%>
+                <% jobs_group.each do |job_group|%>
+                <tr>
+                  <%3.times.each do |i|%>
+                  <td>
+                    <% if job_group[i].present?%>
+                    <a data-job="<%= job_group[i].to_json%>" class="job-item">
+                      <i class="icon-plus"></i>
+                    <%= job_group[i].name %>
+                    </a>
+                    <% end %>
+                  </td>
+                  <% end %>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+        </div>
+        <% end %>
+      </fieldset>
+    </div>
+</div>
+
+<div id="foo"></div>
+<% end %>
+<script id="entry-template" type="text/x-handlebars-template">
+  <div class="entry">
+  <h1>{{name}}</h1>
+  <div class="body">
+    {{amount}}
+  </div>
+</div>
+</script>
+<script type="text/javascript">
+var form = $("#new_client");
+$('#phone1').autocomplete({source: '/clients.json',
+    select:function (event, ui) {  
+            form.autofill(ui.item)
+            event.preventDefault();
+        }
+}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+    return $( "<li></li>" )
+      .data( "item.autocomplete", item )
+      .append( "<a>"+item.first_name+" "+ item.last_name+" <strong>" + item.phone1 + "</strong> / " + item.phone2 + "</a>" )
+      .appendTo( ul );
+    };
+
+$("#tabbed").on("click","a", function(e){
+  jQuery(".tab-content").hide();
+  $("#" + $(this).attr("data-href")).show();
+  e.preventDefault();
+})
+
+$(".job-item-container").on("click","a.job-item", function(){
+$(this).find("i").toggleClass("icon-ok");
+
+var template = Handlebars.compile($("#entry-template").html());
+$("#foo").append(template($(this).data("job")))
+});
+
+</script>

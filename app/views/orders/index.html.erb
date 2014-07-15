@@ -1,0 +1,35 @@
+<h1>Listing orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Actual amount</th>
+      <th>Total amount</th>
+      <th>Discount</th>
+      <th>Created by</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.client_id %></td>
+        <td><%= order.actual_amount %></td>
+        <td><%= order.total_amount %></td>
+        <td><%= order.discount %></td>
+        <td><%= order.created_by %></td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order', new_order_path %>

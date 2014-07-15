@@ -1,6 +1,10 @@
 Espa::Application.routes.draw do
 
+  devise_for :users
 
+  resources :line_items
+
+  resources :orders
 
   resources :roles_users
 
@@ -16,12 +20,17 @@ Espa::Application.routes.draw do
     resources :roles
     resources :jobs
     resources :rate_cards
+    resources :inventories
   end
 
   resources :inventories
-  resource :pos
+  resource :pos do
+    get :new_order
+  end
+  
+  get 'sales/new' => 'pos#new_order'
 
-  devise_for :users
+  
   resources :how_mets
 
   resources :services

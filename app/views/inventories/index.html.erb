@@ -1,6 +1,12 @@
-<h1>Listing inventories</h1>
+<% content_for :quick_links do %>
+  <%= render :partial =>"quick_links"%>
+<% end %>
 
-<table>
+<legend>Inventories</legend>
+<p class="pull-right">
+<%= link_to 'New Inventory', new_admin_inventory_path ,:class=>"btn btn-info"%>
+</p>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -34,4 +40,4 @@
 
 <br>
 
-<%= link_to 'New Inventory', new_inventory_path %>
+<%#= link_to 'New Inventory', new_inventory_path %>

@@ -5,7 +5,9 @@ class ClientsController < EspaBaseController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @clients = Client.scoped
+    @clients = @clients.search(params[:term]) if params[:term].present?
+    @clients= @clients.paginate(:page => params[:page])
   end
 
   # GET /clients/1

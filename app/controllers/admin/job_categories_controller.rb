@@ -45,7 +45,7 @@ class Admin::JobCategoriesController < Admin::AdminBaseController
   def update
     respond_to do |format|
       if @job_category.update(job_category_params)
-        format.html { redirect_to @job_category, notice: 'Job category was successfully updated.' }
+        format.html { redirect_to admin_job_category_path(@job_category), notice: 'Job category was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
