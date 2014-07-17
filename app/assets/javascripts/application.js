@@ -11,5 +11,4 @@
 // about supported directives.
 //
 //= require jquery
-//= require vendor/bootstrap.min
 //=
