@@ -1,0 +1,1 @@
+"use strict";angular.module("Espa",["ngRoute","RequestConfigCnst","RoutesConfigMD"]).config(["$routeProvider","RoutesConfig",function(o,t){t.routes.forEach(function(t){o.when(t.url,{templateUrl:t.templateUrl,controller:t.controller})}),o.otherwise({redirectTo:t.defaultRoute})}]).run(["$rootScope","$http",function(){}]);
