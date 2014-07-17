@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715155724) do
+ActiveRecord::Schema.define(version: 20140715181538) do
 
   create_table "appointments", force: true do |t|
     t.datetime "start_time"
@@ -71,11 +71,25 @@ ActiveRecord::Schema.define(version: 20140715155724) do
     t.string   "name"
     t.text     "description"
     t.string   "inventory_type"
-    t.decimal  "cost",           precision: 10, scale: 0
+    t.decimal  "cost",                 precision: 10, scale: 0
     t.integer  "quantity"
     t.datetime "purchased_on"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "price",                precision: 10, scale: 0
+    t.string   "code"
+    t.integer  "unit"
+    t.string   "distributor_name"
+    t.string   "distributor_phone_no"
+    t.decimal  "unit_Price",           precision: 10, scale: 0
+    t.decimal  "total_price",          precision: 10, scale: 0
+    t.decimal  "total_paid",           precision: 10, scale: 0
+    t.decimal  "discount",             precision: 10, scale: 0
+    t.string   "payment_type"
+    t.decimal  "cash",                 precision: 10, scale: 0
+    t.decimal  "check",                precision: 10, scale: 0
+    t.decimal  "card",                 precision: 10, scale: 0
+    t.decimal  "due",                  precision: 10, scale: 0
   end
 
   create_table "job_categories", force: true do |t|

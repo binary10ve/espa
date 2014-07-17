@@ -6,9 +6,8 @@ class Admin::StaffsController  < Admin::AdminBaseController
   def index
 
     @staffs = User.includes(:roles)
-    @staffs = @staffs.search(params[:query]) if params[:query].present?
+    @staffs = @staffs.search(params[:term]) if params[:term].present?
     @staffs= @staffs.paginate(:page => params[:page])
-
   end
 
   # GET /staffs/1

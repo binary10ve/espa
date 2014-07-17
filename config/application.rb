@@ -13,8 +13,9 @@ module Espa
     # -- all .rb files in that directory are automatically loaded.
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')  
+    config.assets.precompile << %w(*.png *.jpg *.jpeg *.gif)
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
-    config.assets.precompile += ['dessert.css']
+    config.assets.precompile += ['dessert.css','marketing.css','marketing.js']
 
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.

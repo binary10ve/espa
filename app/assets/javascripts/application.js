@@ -11,10 +11,5 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require bootstrap.min
-//= require typeahead
-//= require bloodhound
-//= require handlebars
-//= require_tree .
+//= require vendor/bootstrap.min
+//=

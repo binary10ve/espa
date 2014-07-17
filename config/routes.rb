@@ -29,6 +29,7 @@ Espa::Application.routes.draw do
   end
   
   get 'sales/new' => 'pos#new_order'
+  get '' => 'marketing#show'
 
   
   resources :how_mets
@@ -42,6 +43,9 @@ Espa::Application.routes.draw do
   resources :discounts
 
   root to: "appointments#index"
+  authenticated :user do
+    root to: "appointments#show", as: :authenticated_root, via: :get
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

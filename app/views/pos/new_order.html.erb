@@ -1,7 +1,8 @@
 <% content_for :quick_links do %>
   <%= render :partial =>"quick_links"%>
 <% end %>
-<%= form_tag '/' ,:class => "form-horizontal",:id=>"new_client" do %>
+<div id="new-pos-container">
+  <%= form_tag '/' ,:class => "form-horizontal",:id=>"new_client" do %>
 
 <div class="row" style="margin-left:10px;">
 <legend>New order</legend>
@@ -79,42 +80,36 @@
       </fieldset>
     </div>
 </div>
-
-<div id="foo"></div>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Service By</th>
+      <th>Unit</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody id="line-items">
+    
+  </tbody>
+</table>
+<legend>Total</legend>
 <% end %>
+
 <script id="entry-template" type="text/x-handlebars-template">
-  <div class="entry">
-  <h1>{{name}}</h1>
-  <div class="body">
-    {{amount}}
-  </div>
+<tr>
+      <td>
+        {{name}}
+      </td>
+      <td>
+       <input />
+      </td>
+      <td>
+        <input value="1"/>
+      </td>
+      <td>
+        <input value="{{amount}}"/>
+      </td>
+</tr>
+</script>
 </div>
-</script>
-<script type="text/javascript">
-var form = $("#new_client");
-$('#phone1').autocomplete({source: '/clients.json',
-    select:function (event, ui) {  
-            form.autofill(ui.item)
-            event.preventDefault();
-        }
-}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-    return $( "<li></li>" )
-      .data( "item.autocomplete", item )
-      .append( "<a>"+item.first_name+" "+ item.last_name+" <strong>" + item.phone1 + "</strong> / " + item.phone2 + "</a>" )
-      .appendTo( ul );
-    };
-
-$("#tabbed").on("click","a", function(e){
-  jQuery(".tab-content").hide();
-  $("#" + $(this).attr("data-href")).show();
-  e.preventDefault();
-})
-
-$(".job-item-container").on("click","a.job-item", function(){
-$(this).find("i").toggleClass("icon-ok");
-
-var template = Handlebars.compile($("#entry-template").html());
-$("#foo").append(template($(this).data("job")))
-});
-
-</script>
